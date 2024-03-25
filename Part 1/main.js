@@ -1,5 +1,3 @@
-document.querySelector("html").style.backgroundColor = "red";
-
 // Variables and Function Definitions
 const customName = document.getElementById('customname');
 const randomize = document.querySelector('.randomize');
@@ -24,22 +22,25 @@ function result() {
   let xItem = randomValueFromArray(insertX);
   let yItem = randomValueFromArray(insertY);
   let zItem = randomValueFromArray(insertZ);
-  newStory === newStory.replace(":insertx:", xItem);
-  newStory === newStory.replace(":inserty:", yItem);
-  newStory === newStory.replace(":insertz:", zItem);
+  newStory = newStory.replace(/:insertx:/g, xItem);
+  newStory = newStory.replace(/:inserty:/g, yItem);
+  newStory = newStory.replace(/:insertz:/g, zItem);
 
 
   if(customName.value !== '') {
     const name = customName.value;
-    newStory === newStory.replace("Bob", name);
+    newStory = newStory.replace("Bob", name);
 
   }
 
   if(document.getElementById("uk").checked) {
     let stone = 300 * 0.0714286
     const weight = Math.round(stone);
-    let centigrade = (92 - 32) * 5/9;
+    newStory = newStory.replace("300 pounds", weight + " stones")
+
+    let centigrade = (94 - 32) * 5/9;
     const temperature =  Math.round(centigrade);
+    newStory = newStory.replace("94 fahrenheit", temperature + " centigrade")
 
   }
 
