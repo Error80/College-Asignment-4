@@ -8,7 +8,7 @@ let insertY = ["the soup kitchen","Disneyland","the White House"];
 let insertZ = ["spontaneously combusted","melted into a puddle on the sidewalk","turned into a slug and crawled away"];
 
 
-//
+// Chooses Random Varriables
 function randomValueFromArray(array){
     const random = Math.floor(Math.random()*array.length);
     return array[random];
@@ -18,6 +18,7 @@ randomize.addEventListener('click', result);
 
 function result() {
 
+  // Replaces :insertX:, :insertY:, and :insertZ: with their respecive items.
   let newStory = storyText;
   let xItem = randomValueFromArray(insertX);
   let yItem = randomValueFromArray(insertY);
@@ -26,14 +27,16 @@ function result() {
   newStory = newStory.replace(/:inserty:/g, yItem);
   newStory = newStory.replace(/:insertz:/g, zItem);
 
-
+  // Replaces Bob if a name is defined in the text box
   if(customName.value !== '') {
     const name = customName.value;
     newStory = newStory.replace("Bob", name);
 
   }
 
+  // Converts pounds and fahrenheit to stones and centigrade/celsius respectively
   if(document.getElementById("uk").checked) {
+
     let stone = 300 * 0.0714286
     const weight = Math.round(stone);
     newStory = newStory.replace("300 pounds", weight + " stones")
@@ -44,6 +47,7 @@ function result() {
 
   }
 
+  // Displays the newly generated story on the page
   story.textContent = newStory;
   story.style.visibility = 'visible';
 }
